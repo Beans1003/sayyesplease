@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! 💕</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffebf0;
+        }
+        h1 {
+            color: #ff4d6d;
+        }
+        img {
+            width: 300px;
+            border-radius: 15px;
+        }
+    
+    </style>
+</head>
+<body>
+
+<h1>Yay! You said YES! 💖😍</h1>
+<p>I knew you would! Now, let's go on a date 💓😘</p>
+<p>I really do want to be with you💞</p>
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOG91bzk3MWF2YnN4ajBtbnd3MWo1ejczdXB2YWpjYTF0aXJmZmdwcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NgTPtPRwOwjsDzP7L8/giphy.gif">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWE4GYFvLqaKs89Axm1H0nqlZQkZyTPFvdIQ&s">
+
+<!-- Play Music Button -->
+<button id="playButton">Play Our Song 🎶</button>
+
+<!-- Audio -->
+<audio id="valentineMusic">
+    <source src="https://files.catbox.moe/erezsf.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    document.getElementById("playButton").addEventListener("click", function() {
+        let audio = document.getElementById("valentineMusic");
+        audio.currentTime = 27;  // Start at the chorus (adjust if needed)
+        audio.volume = 0.5;  // Adjust volume
+        audio.play();
+        this.style.display = "none";  // Hide button after clicking
+    });
+    function logRedirect(page) {
+       fetch("https://script.google.com/macros/s/AKfycbxi-GfORC4ZA6n97xvoHlTEEtMSTem2Aocg6CxYZ8IJBfk7eH678bWtWdZz7V1d85j8BQ/exec?user=" + encodeURIComponent(navigator.userAgent) + "&page=" + encodeURIComponent(page))
+           .then(response => console.log("Redirect logged"))
+           .catch(error => console.error("Logging failed", error));
+   }
+
+   logRedirect("yes.html"); // Change accordingly for each file
+
+</script>
+
+</body>
+</html>
+

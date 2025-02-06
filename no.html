@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Valentine 😢</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+        }
+        .container {
+            margin-top: 10%;
+        }
+        h1 {
+            color: #d9534f;
+        }
+        p {
+            font-size: 20px;
+            color: #555;
+        }
+        img {
+            width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        .question-box {
+            display: block;
+            width: 300px;
+            margin: 10px auto;
+            padding: 20px;
+            background-color: #c4c4c4;
+            text-decoration: none;
+            color: black;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .question-box:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Oh, I guess you just don't want to be my valentine... 💔😢</h1>
+    <p>Guess I'll just eat chocolate alone... 😔🍫</p>
+    <p>It's okay though 🥀</p>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXg4Nm5idGd0ODhsamtzaXAwNTMwcjh2NnJyaXVyZWZvdjV4azMzeCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ISOckXUybVfQ4/giphy.gif" alt="Sad GIF">
+</div>
+
+<a href="Will you be my valentine.html" class="question-box">Regretting your descision?💔🥀</a>
+
+<!-- Play Music Button -->
+<button id="playButton">Hurts Even More.mp3 🥀💔😭</button>
+
+<!-- Audio -->
+<audio id="valentineMusic">
+    <source src="https://files.catbox.moe/mdutpr.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    document.getElementById("playButton").addEventListener("click", function() {
+        let audio = document.getElementById("valentineMusic");
+        audio.currentTime = 12;  // Start at the chorus (adjust if needed)
+        audio.volume = 0.5;  // Adjust volume
+        audio.play();
+        this.style.display = "none";  // Hide button after clicking
+    });
+    function logRedirect(page) {
+       fetch("https://script.google.com/macros/s/AKfycbxi-GfORC4ZA6n97xvoHlTEEtMSTem2Aocg6CxYZ8IJBfk7eH678bWtWdZz7V1d85j8BQ/exec?user=" + encodeURIComponent(navigator.userAgent) + "&page=" + encodeURIComponent(page))
+           .then(response => console.log("Redirect logged"))
+           .catch(error => console.error("Logging failed", error));
+   }
+
+   logRedirect("no.html"); // Change accordingly for each file
+
+</script>
+
+</body>
+</html>

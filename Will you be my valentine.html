@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffebf0;
+        }
+        .container {
+            margin-top: 10%;
+        }
+        h1 {
+            color: #ff4d6d;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        .no {
+            background-color: #ffb6c1;
+            color: white;
+            position: absolute;
+        }
+        img {
+            width: 300px;
+            border-radius: 15px;
+            transition: 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Will you be my Valentine? 💖</h1>
+    <img id="cuteGif" src="https://media.giphy.com/media/RLG2ZFo3yBMHYXC36F/giphy.gif?cid=790b7611h1nl8cvbglnl65brp81kmuekqehxgkyb0mdklk10&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cute Love GIF">
+    <div class="buttons">
+        <button class="yes" onclick="redirect()">Yes! 💕</button>
+        <button class="no" onclick="moveNoButton()">No 🙁</button>
+    </div>
+</div>
+
+<!-- Hidden Audio Element -->
+<audio id="pleadingMusic">
+    <source src="https://files.catbox.moe/uun0cu.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    let musicPlayed = false;  // Flag to track if music has started
+    let noClickCount = 0;
+    const maxNoClicks = 15; // Number of "No" clicks before redirect
+    let yesButton = document.querySelector('.yes'); // Reference to the "Yes" button
+
+    function redirect() {
+        window.location.href = "yes.html"; 
+    }
+
+    function moveNoButton() {
+        let noButton = document.querySelector('.no');
+        let gif = document.getElementById("cuteGif");
+        let audio = document.getElementById("pleadingMusic");
+
+        let messages = [
+            "Are you sure? 🥺",
+            "Think again! 🥰",
+            "Please? 😘",
+            "Pretty please? 😍",
+            "I won't give up! 💖",
+            "I'm on bended knee 🧎",
+            "PLEASE PLEASE PLEASE PLEASE🙏🙏🙏🙏"
+        ];
+        let currentMessage = noButton.innerText;
+        let nextMessage = messages[(messages.indexOf(currentMessage) + 1) % messages.length];
+        noButton.innerText = nextMessage;
+        
+        // Change GIF to a pleading one
+        gif.src = "https://media.giphy.com/media/SqyOu1Y9H2m1c8EB7o/giphy.gif?cid=790b7611mx490dnqxvojr87g3plsbc2zwtnug8x4l2gqg84d&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+        gif.src = "https://thumbs.dreamstime.com/b/business-man-praying-his-knees-10468077.jpg"
+
+        // Move button randomly within the .buttons container
+        let maxX = 200; // Limits movement horizontally
+        let maxY = 50;  // Limits movement vertically
+        let randomX = Math.random() * maxX;
+        let randomY = Math.random() * maxY;
+        noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+        // Increase the size of the "Yes" button every time "No" is clicked
+        let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = `${currentSize * 1.2}px`;  // Increase size by 20%
+
+        // Play music only if it hasn't played yet
+        if (!musicPlayed) {
+            audio.volume = 0.7;  // Adjust volume if needed
+            audio.play();
+            musicPlayed = true;  // Set flag so it doesn't restart
+            audio.currentTime = 214;
+        }
+        noClickCount++;
+        if (noClickCount >= maxNoClicks) {
+            window.location.href = "no.html";
+        }
+    }
+</script>
+
+</body>
+</html>
+
