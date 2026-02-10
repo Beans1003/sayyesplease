@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffebf0;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            /* FIX: Removed overflow:hidden to allow scrolling */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4d6d;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            text-shadow: 2px 2px 0px #fff;
+        }
+
+        .gif-container img {
+            width: 250px;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.2);
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Allows buttons to stack on small screens */
+        }
+
+        button {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .yes-btn {
+            background-color: #ff4d6d;
+            color: white;
+            z-index: 999; /* Keeps it above everything */
+        }
+
+        .no-btn {
+            background-color: #ffffff;
+            color: #ff4d6d;
+            border: 2px solid #ff4d6d;
+            position: relative; /* Changed from absolute to start in place */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1> HAIIII, Darling! Will you be my Valentine? 🥰💖</h1>
+        <div class="gif-container">
+            <img id="mainGif" src="https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyc2s5czR2ZnZsMnQ0ajQxc29ncjdneGlkbmpoaW55Y29jbGN2NGJheSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/vDhDcIEmShbUI/200.gif" alt="Cute Bear">
+        </div>
+        
+        <div class="buttons">
+            <button class="yes-btn" onclick="handleYes()">Yes! 💕</button>
+            <button class="no-btn" onclick="handleNo()">No 🙁</button>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/uun0cu.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // PASTE YOUR GOOGLE SCRIPT URL HERE
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzE1M8dcYqbWUhXWg0FjvH7j_oXMtBB04Okk_VT-H4AilcsjX5z1xrEezDkuMqadmLp/exec';
+
+        let noClickCount = 0;
+        const messages = [
+            "Are you sure? 🥺",
+            "Please think again! 😖",
+            "Don't do this to me! 😭",
+            "I'll be so sad... 💔",
+            "I'm gonna cry... 🌊",
+            "You're breaking my heart! 🥀",
+            "Come on darling, say yes! 😢",
+            "Please baby, I love you so much! 😭",
+        ];
+
+        function logAnswer(answer) {
+            fetch(`${scriptURL}?answer=${encodeURIComponent(answer)}&userAgent=${encodeURIComponent(navigator.userAgent)}`, { mode: 'no-cors' })
+                .then(() => console.log("Logged: " + answer))
+                .catch(e => console.error("Error logging", e));
+        }
+
+        function handleYes() {
+            logAnswer("YES");
+            // Redirect to the celebration page
+            window.location.href = "yes.html";
+        }
+
+        function handleNo() {
+            // Start music on first interaction if not playing
+            const audio = document.getElementById("bgMusic");
+            if(audio.paused) { audio.volume=0.5; audio.play(); }
+
+            noClickCount++;
+            const noBtn = document.querySelector('.no-btn');
+            const yesBtn = document.querySelector('.yes-btn');
+            const gif = document.getElementById('mainGif');
+
+            // 1. Change text
+            if (noClickCount <= messages.length) {
+                noBtn.innerText = messages[noClickCount - 1];
+            } else {
+                window.location.href = "no.html";
+                return;
+            }
+
+            // 2. Make Yes button grow
+            let currentSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = `${currentSize * 1.4}px`;
+            yesBtn.style.padding = "20px 40px";
+
+            // 3. Move No button randomly but STAY within the visible area
+            noBtn.style.position = "fixed";
+            const padding = 50;
+            const maxX = window.innerWidth - noBtn.clientWidth - padding;
+            const maxY = window.innerHeight - noBtn.clientHeight - padding;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+            // 4. Change GIF to crying cat/bear
+            gif.src = "https://i.pinimg.com/originals/f0/61/c1/f061c18854fe28120ed76c9e03002937.gif";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just for You 💕</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f5;
+            padding: 50px;
+        }
+        h1 {
+            color: #ff4d6d;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+        .music-btn {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hey darling, if you're reading this just know that you are BEAUTIFUL, STUNNING, PRETTY, CUTE, AND EVERYTHING ❤️</h1>
+    <h2>
+        I realized today that as much as I love your face, I love the soul behind it even more. There is a specific way you glow when you smile—it’s like seeing a reflection of everything good in the world—and your laugh is quite literally the best part of my day.
+I’ll admit, your beauty still captivates me every single time I see you, but it’s your kindness and your sweetness that I truly treasure. Watching you move through the world with such grace makes me want to be a better man.
+More than anything, I’m so grateful that we aren't just walking through life together, but walking the path of God. Growing alongside you, as we both strive to be who He called us to be, is the greatest blessing I’ve ever known. My heart doesn’t just skip a beat when I see you; it feels at peace because I know we’re building something eternal. I love you more than words can say. 💖
+    </h2>
+    <p>As the Bible says "Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs. Love does not delight in evil but rejoices with the truth. It always protects, always trusts, always hopes, always perseveres. Love never fails. But where there are prophecies, they will cease; where there are tongues, they will be stilled; where there is knowledge, it will pass away." 1 Corinthians 13:4-8 </p>
+    
+    <h3>Here's a poem that I wrote, it's called "The Garden We Tend":</h3>
+
+    <p>"We aren't the people that we were back then,<br>
+        When we first spoke and life was fresh and new.<br>
+        We’ve traveled miles of "where" and "why" and "when,"<br>
+        And every step has led me closer to you.</p>
+        
+    <p>The more I know of you—the heart, the mind,<br>
+        The quiet corners and the morning light—<br>
+        The more I’m certain that I’ll never find<br>
+        A soul that shines with a more holy light.</p>
+        
+    <p>We’ve had our clouds, our moments lost in mist,<br>
+        The misunderstandings and the words gone wrong.<br>
+        But every time we’ve struggled or we’ve missed,<br>
+        The grace we find has only made us strong.</p>
+        
+    <p>We don’t just brush the shattered glass aside;<br>
+        We mend the cracks and find the beauty there.<br>
+        With God as our foundation and our guide,<br>
+        There is no burden that we cannot bear.</p>
+
+    <p>So here we are—more deeply woven now,<br>
+        Refined by time and strengthened by the strain.<br>
+        To love you is a gift, a daily vow,<br>
+        The sun that lingers long after the rain."</p>
+
+    <audio id="messageMusic">
+        <source src="https://files.catbox.moe/aamr43.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-btn" onclick="toggleMusic()" id="mBtn">🎵 Play Music for My Message</button>
+
+    <script>
+        const music = document.getElementById('messageMusic');
+        const btn = document.getElementById('mBtn');
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                btn.innerText = "⏸ Pause Music";
+            } else {
+                music.pause();
+                btn.innerText = "🎵 Play Music for My Message";
+            }
+        }
+    </script>
+</body>
+</html>

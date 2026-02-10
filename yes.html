@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAAAY! I Love You! 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            background-color: #fff0f5;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff4d6d;
+            font-size: 3rem;
+            margin-top: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        .center-img {
+            width: 300px;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.4);
+            margin-bottom: 20px;
+        }
+
+        .special-msg-btn {
+            display: none; 
+            background-color: #ff4d6d;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+            transition: 0.3s ease;
+            margin-bottom: 30px;
+            border: 3px solid white;
+        }
+
+        .special-msg-btn:hover {
+            transform: scale(1.1);
+            background-color: #ff758f;
+        }
+
+        .container {
+            position: relative;
+            height: 50vh;
+            width: 100%;
+        }
+
+        .floater {
+            position: absolute;
+            font-size: 40px;
+            cursor: pointer;
+            animation: float 6s ease-in-out infinite;
+            transition: transform 0.3s;
+        }
+        
+        .floater:hover { transform: scale(1.2); }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 4px solid #ff4d6d;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="yippeeSound">
+        <source src="https://files.catbox.moe/663qex.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>YAYYYYYY! You said YES! HEHEHEHE 💖😍</h1>
+    <img class="center-img" src="https://media.tenor.com/CarV7GDhiwQAAAAM/yippee-cat.gif">
+    
+    <br>
+    <a href="message.html" id="specialBtn" class="special-msg-btn">I have a message for you 💌</a>
+    
+    <p id="instructionText">Well, I have some messages for you, darling, tap the icons HEHEHE ^^ 🥰</p>
+
+    <div class="container">
+        <div class="floater" style="top: 10%; left: 10%; animation-delay: 0s;" onclick="openModal('msg1')">💌</div>
+        <div class="floater" style="top: 20%; right: 15%; animation-delay: 1s;" onclick="openModal('msg2')">🎵</div>
+        <div class="floater" style="top: 60%; left: 20%; animation-delay: 2s;" onclick="openModal('msg3')">📸</div>
+        <div class="floater" style="top: 50%; right: 10%; animation-delay: 3s;" onclick="openModal('msg4')">🌹</div>
+    </div>
+
+    <div id="msg1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('msg1')">&times;</span>
+            <h2>My Promise</h2>
+            <p>I promise to always be there for you, to always reassure you, comfort you, love you, save you, help you, and I will always buy you chocolate and everything, surprises and all HEHHEHE. You are my favorite person, darling. I love you so much 💖</p>
+        </div>
+    </div>
+
+    <div id="msg2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('msg2')">&times;</span>
+            <h2>Our Song</h2>
+            <p>This song reminds me of you, reminds me of us 💞 Your favorite song and mine, it's basically our themesong now HEHEHE ><</p>
+            <audio id="specialSong" controls style="width: 100%;">
+                <source src="https://files.catbox.moe/jomel0.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <div id="msg3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('msg3')">&times;</span>
+            <h2>A Memory</h2>
+            <img src="https://files.catbox.moe/6ehcie.JPG" style="width:100%; border-radius:10px;">
+            <img src="https://files.catbox.moe/fjlm4z.jfif" style="width: 150px; height: 200px; border-radius:10px;">
+            <img src="https://files.catbox.moe/xkhqbx.jpg" style="width: 150px; height: 150x; border-radius:10px;">
+            <p>You make me so happy, darling. Look how cute we look together hehehe 🥰</p>
+        </div>
+    </div>
+
+    <div id="msg4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('msg4')">&times;</span>
+            <h2>A Poem for You</h2>
+            <p><i>"Your smile is the sun,<br>Your laugh is the breeze,<br>Being your Valentine<br>Puts my heart at ease."</i></p>
+        </div>
+    </div>
+
+    <script>
+        const specialSong = document.getElementById('specialSong');
+        const yippee = document.getElementById('yippeeSound');
+        
+        let clickedIcons = { msg1: false, msg2: false, msg3: false, msg4: false };
+
+        window.onload = function() {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+                if (timeLeft <= 0) return clearInterval(interval);
+                var particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } }));
+            }, 250);
+
+            // Play Yippee on load
+            yippee.play().catch(e => console.log("Playback blocked until user interaction"));
+        };
+
+        function openModal(id) {
+            document.getElementById(id).style.display = "flex";
+            clickedIcons[id] = true;
+            checkUnlock();
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+            if (id === 'msg2') {
+                
+            }
+        }
+
+        function checkUnlock() {
+            if (Object.values(clickedIcons).every(val => val === true)) {
+                yippee.play(); // Play Yippee when unlocked
+                document.getElementById('specialBtn').style.display = 'inline-block';
+                document.getElementById('instructionText').innerText = "You've unlocked a special message! Click above HEHEHE🥰";
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) closeModal(event.target.id);
+        }
+    </script>
+</body>
+</html>
